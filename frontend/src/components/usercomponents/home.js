@@ -109,20 +109,22 @@ const Home = () => {
               </div>
             </Link>
           ))}
-          <Link className="card double" data-aos="fade-up" data-aos-once="true" to={`/berita/${berita6._id}`}>
-            <div className="img">
-              <img src={berita6.imageUrl} alt="kajoran" />
-            </div>
-            <div className="write">
-              <h1>{berita6.title}</h1>
-              <p>{berita6.formattedDate}</p>
-              <div className="more">
-                <p>
-                  Baca Selengkapnya <FontAwesomeIcon className="icon" icon={faChevronRight} />
-                </p>
+          {berita25.length >= 4 && (
+            <Link className="card double" data-aos="fade-up" data-aos-once="true" to={`/berita/${berita6._id}`}>
+              <div className="img">
+                <img src={berita6.imageUrl} alt="kajoran" />
               </div>
-            </div>
-          </Link>
+              <div className="write">
+                <h1>{berita6.title}</h1>
+                <p>{berita6.formattedDate}</p>
+                <div className="more">
+                  <p>
+                    Baca Selengkapnya <FontAwesomeIcon className="icon" icon={faChevronRight} />
+                  </p>
+                </div>
+              </div>
+            </Link>
+          )}
         </div>
         <Link to="/" className="btnMore">
           Lihat Selengkapnya

@@ -261,6 +261,7 @@ body {
   z-index: 1;
   cursor: pointer;
   text-decoration: none;
+  position: relative;
 }
 
 .home .news .box .card .img {
@@ -334,6 +335,17 @@ body {
 
 .home .news .box .card:hover .write .more p {
   text-decoration: underline;
+}
+
+.home .news .box .card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, var(--dark-biru) 0.1%, #061a25 1%, transparent 100%);
+  z-index: 4;
 }
 
 .home .news .box .card .write .more p .icon {
