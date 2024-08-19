@@ -1,12 +1,14 @@
 import fs from 'fs';
 import { google } from 'googleapis';
 import { createAnnouncement } from '../../repositories/announcement.repository.js';
-import apikeys from '../../../desa-kajoran.json' assert { type: 'json' };
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 const SCOPE = ['https://www.googleapis.com/auth/drive.file'];
 
 async function authorize() {
-  const jwtClient = new google.auth.JWT(apikeys.client_email, null, apikeys.private_key, SCOPE);
+  const jwtClient = new google.auth.JWT(process.env.GOOGLE_CLOUD_CLIENT_EMAIL, null, process.env.GOOGLE_CLOUD_PRIVATE_KEY.replace(/\\n/g, '\n'), SCOPE);
   await jwtClient.authorize();
   return jwtClient;
 }
