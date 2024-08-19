@@ -1,7 +1,6 @@
 import { Router } from 'express';
 import { createOrganization, deleteOrganization, getOneOrganization, getOrganization, updateOrganization } from '../controllers/organization.controller.js';
 import { upload } from '../services/upload.service.js';
-import { cookieJwtAuth } from '../middleware/auth.middleware.js';
 
 const router = Router();
 

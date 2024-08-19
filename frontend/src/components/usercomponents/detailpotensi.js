@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import ReactPaginate from 'react-paginate';
-import { faArrowRight, faBookmark, faCalendarDays, faChevronRight, faMapLocation, faMapSigns, faPhone } from '@fortawesome/free-solid-svg-icons';
+import { faArrowRight, faChevronRight, faMapLocation, faPhone } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Link } from 'react-router-dom';
 import config from '../../utils/config';

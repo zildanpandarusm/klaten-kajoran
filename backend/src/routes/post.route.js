@@ -8,8 +8,8 @@ const router = Router();
 router.get('/', (req, res, next) => getPost(req, res, next));
 router.get('/kategori/:kategori/:id', (req, res, next) => getPostCategory(req, res, next));
 router.get('/:id', (req, res, next) => getOnePost(req, res, next));
-router.post('/', cookieJwtAuth, upload.single('file'), (req, res, next) => createPost(req, res, next));
-router.patch('/:id', cookieJwtAuth, upload.single('file'), (req, res, next) => updatePost(req, res, next));
-router.delete('/:id', cookieJwtAuth, (req, res, next) => deletePost(req, res, next));
+router.post('/', upload.single('file'), (req, res, next) => createPost(req, res, next));
+router.patch('/:id', upload.single('file'), (req, res, next) => updatePost(req, res, next));
+router.delete('/:id', (req, res, next) => deletePost(req, res, next));
 
 export default router;
