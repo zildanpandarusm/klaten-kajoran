@@ -120,7 +120,7 @@ aside {
   display: flex;
   flex-direction: column;
   position: fixed;
-  z-index: 5;
+  z-index: 52;
 }
 
 aside .logo {
@@ -267,6 +267,7 @@ aside .logoutSidebar {
   align-items: center;
   background-color: var(--light-biru);
   position: fixed;
+  z-index: 50;
   top: 0;
   right: 0;
 }
