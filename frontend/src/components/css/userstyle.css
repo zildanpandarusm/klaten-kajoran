@@ -2039,6 +2039,7 @@ body {
 
   .berita .box .first .card .write {
     margin: 0;
+    width: 100%;
   }
 
   .berita .box .first .card .write h2 {
