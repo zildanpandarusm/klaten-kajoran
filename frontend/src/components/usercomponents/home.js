@@ -19,15 +19,21 @@ const Home = () => {
     const response = await axios.get(`${config.BASE_URL}/posts`);
     const allData = response.data.data;
 
-    const firstData = allData.slice(0, 1)[0];
+    if (allData.length >= 6) {
+      // Jika data lebih dari atau sama dengan 6
+      const firstData = allData.slice(0, 1)[0];
+      const twoFiveData = allData.slice(1, 5);
+      const lastData = allData.slice(5, 6)[0];
 
-    const twoFiveData = allData.slice(1, 5);
-
-    const lastData = allData.slice(5, 6)[0];
-
-    setBerita1(firstData);
-    setBerita25(twoFiveData);
-    setBerita6(lastData);
+      setBerita1(firstData);
+      setBerita25(twoFiveData);
+      setBerita6(lastData);
+    } else {
+      // Jika data kurang dari 6, ambil semua data
+      setBerita1(allData[0] || {});
+      setBerita25(allData.length > 1 ? allData.slice(1) : []);
+      setBerita6(allData[allData.length - 1] || {});
+    }
   };
 
   const getPotentials = async () => {

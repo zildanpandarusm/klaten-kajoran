@@ -58,7 +58,6 @@ const EditNews = () => {
       formData.append('category', category);
       await axios.patch(`${config.BASE_URL}/posts/${params.id}`, formData);
       setAktif(false);
-      resetVariable();
       navigate(`/admin/berita`);
     } catch (error) {
       // setMsg(error.response.data.msg);
