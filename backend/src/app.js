@@ -16,7 +16,7 @@ const app = express();
 app.use(
   cors({
     credentials: true,
-    origin: 'https://kajoran-klaten.vercel.app/',
+    origin: 'https://kajoran-klaten.vercel.app',
   })
 );
 app.use(cookieParser());
