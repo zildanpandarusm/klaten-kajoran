@@ -1819,6 +1819,10 @@ body {
     font-size: 0.9em;
   }
 
+  .navbar {
+    height: 95vh;
+  }
+
   .navbar .navNol {
     display: none;
   }
