@@ -30,6 +30,10 @@ app.use('/users', userRouter);
 app.use('/about', aboutRouter);
 app.use('/organization', organizationRouter);
 
+app.get('/', (req, res) => {
+  res.send('Hello');
+});
+
 const PORT = 5050;
 
 app.listen(PORT, () => console.log(`Running on port ${PORT}`));
