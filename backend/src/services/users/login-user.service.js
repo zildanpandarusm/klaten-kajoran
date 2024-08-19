@@ -17,6 +17,8 @@ export async function loginUserService(res, data) {
 
   res.cookie('token', token, {
     httpOnly: true,
+    secure: true, // Set to true if you're using HTTPS
+    sameSite: 'None', // Needed for cross-site cookie sharing
   });
 
   return {
