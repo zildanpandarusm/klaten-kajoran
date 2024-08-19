@@ -1875,9 +1875,36 @@ body {
     color: #000;
   }
 
+  .home .news .box .card.double .write h1 {
+    font-size: 0.8rem;
+    color: #474747;
+  }
+
   .home .news .box .card.double .write p {
     font-size: 0.8rem;
     color: #474747;
+  }
+
+  .home .news .box .card.double::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: none;
+    z-index: 4;
+  }
+
+  .home .news .box .card.double:hover::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: none;
+    z-index: 4;
   }
 
   .home .news .box .card.double .write p {

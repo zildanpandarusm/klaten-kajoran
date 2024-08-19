@@ -48,7 +48,7 @@ const Berita = () => {
                 <img src={item.imageUrl} alt={item.title} />
                 <div className="write">
                   <h2>{item.title}</h2>
-                  <h3>{item.date}</h3>
+                  <h3>{item.formattedDate}</h3>
                   <p dangerouslySetInnerHTML={{ __html: item.descSingkat }} />
                   <div className="more">
                     <p>
