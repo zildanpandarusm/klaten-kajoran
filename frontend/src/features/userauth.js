@@ -48,6 +48,7 @@ export const UserMe = createAsyncThunk('user/Me', async (_, thunkAPI) => {
 
 export const UserLogout = createAsyncThunk('user/Logout', async () => {
   await axios.delete(`${config.BASE_URL}/users/logout`);
+  sessionStorage.removeItem('token');
 });
 
 export const authSlice = createSlice({
