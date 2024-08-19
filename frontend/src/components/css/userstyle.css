@@ -1927,12 +1927,13 @@ body {
 
   .home .news .box .card.double {
     flex: 1 1 calc(30% - 2em);
-    height: 23rem;
+    height: fit-content;
     z-index: 1;
   }
 
   .home .news .box .card {
     flex: 1 1 calc(30% - 2em);
+    height: fit-content;
   }
 
   .home .news .box .card.double img {
