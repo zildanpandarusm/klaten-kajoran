@@ -310,6 +310,12 @@ body {
   color: #474747;
 }
 
+.home .news .box .card.double .write {
+  width: 100%;
+  height: fit-content;
+  background-color: var(--dark-biru);
+}
+
 .home .news .box .card.double .write p {
   font-size: 0.8rem;
   color: #fff;
