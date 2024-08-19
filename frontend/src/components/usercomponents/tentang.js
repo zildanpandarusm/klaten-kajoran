@@ -14,27 +14,26 @@ const Tentang = () => {
 
   const getAbout = async () => {
     const response = await axios.get(`${config.BASE_URL}/about`);
-
-    const Data = response.data.data[0];
-
-    setAbout(Data);
+    const data = response.data.data[0];
+    setAbout(data);
   };
-
-  window.addEventListener('resize', adjustFontSize);
-  window.addEventListener('load', adjustFontSize);
 
   function adjustFontSize() {
     const gambar = document.querySelector('.sejarah .gambar');
     const h1 = document.querySelector('.sejarah h1');
 
-    const gambarHeight = gambar.clientHeight;
-    h1.style.fontSize = gambarHeight * 0.15 + 'px';
+    const gambarHeight = gambar?.clientHeight;
+    if (h1) {
+      h1.style.fontSize = gambarHeight * 0.15 + 'px';
+    }
 
     const gambar2 = document.querySelector('.visimisi .gambar');
     const h12 = document.querySelector('.visimisi h1');
 
-    const gambarHeight2 = gambar.clientHeight;
-    h12.style.fontSize = gambarHeight2 * 0.15 + 'px';
+    const gambarHeight2 = gambar2?.clientHeight;
+    if (h12) {
+      h12.style.fontSize = gambarHeight2 * 0.15 + 'px';
+    }
   }
 
   useEffect(() => {
@@ -44,7 +43,17 @@ const Tentang = () => {
   useEffect(() => {
     Aos.init();
     adjustFontSize();
-  }, []);
+
+    // Event listeners untuk resize dan load
+    window.addEventListener('resize', adjustFontSize);
+    window.addEventListener('load', adjustFontSize);
+
+    // Cleanup event listeners saat komponen di-unmount
+    return () => {
+      window.removeEventListener('resize', adjustFontSize);
+      window.removeEventListener('load', adjustFontSize);
+    };
+  }, [about]); // Tambahkan `about` sebagai dependensi
 
   return (
     <div className="tentang">
