@@ -20,7 +20,9 @@ const Pengumuman = () => {
   }, []);
 
   const getAnnouncements = async () => {
-    const response = await axios.get(`${config.BASE_URL}/announcements`);
+    const response = await axios.get(`${config.BASE_URL}/announcements`, {
+      withCredentials: true,
+    });
     const allData = response.data.data;
     setAnnouncements(allData);
   };
