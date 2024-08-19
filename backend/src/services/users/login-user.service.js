@@ -1,11 +1,11 @@
-import bcrypt from 'bcrypt';
+import bcryptjs from 'bcryptjs';
 import { findOneUser } from '../../repositories/user.repository.js';
 import jwt from 'jsonwebtoken';
 
 export async function loginUserService(res, data) {
   const user = await findOneUser(data.email);
 
-  const isPasswordValid = await bcrypt.compare(data.password, user.password);
+  const isPasswordValid = await bcryptjs.compare(data.password, user.password);
 
   if (!isPasswordValid) {
     return res.status(403).json({

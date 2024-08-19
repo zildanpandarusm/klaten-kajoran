@@ -1,8 +1,8 @@
-import bcrypt from 'bcrypt';
+import bcryptjs from 'bcryptjs';
 import { updateUser } from '../../repositories/user.repository.js';
 
 export async function updateUserService(data) {
-  const hashedPass = await bcrypt.hash(data.password, 12);
+  const hashedPass = await bcryptjs.hash(data.password, 12);
 
   const user = {
     username: data.username,
