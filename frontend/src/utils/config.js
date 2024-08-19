@@ -1,5 +1,5 @@
 const config = {
-  BASE_URL: 'http://localhost:5050',
+  BASE_URL: 'https://kajoran-klatenselatan-api.vercel.app',
   IMAGE_BASE_URL: 'http://localhost:3000',
 };
 
