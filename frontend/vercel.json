@@ -17,6 +17,5 @@
   ],
   "env": {
     "REACT_APP_API_URL": "https://api.example.com"
-  },
-  "nodeVersion": "18.x"
+  }
 }
