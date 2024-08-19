@@ -1,5 +1,5 @@
 const config = {
-  BASE_URL: 'https://kajoran-klatenselatan-api.vercel.app/',
+  BASE_URL: 'https://kajoran-klatenselatan-api.vercel.app',
   IMAGE_BASE_URL: 'https://kajoran-klaten.vercel.app/',
 };
 
