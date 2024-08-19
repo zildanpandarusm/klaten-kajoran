@@ -16,6 +16,9 @@ export const LoginUser = createAsyncThunk('user/LoginUser', async (user, thunkAP
       email: user.email,
       password: user.password,
     });
+
+    const token = response.data.token;
+    sessionStorage.setItem('token', token);
     return response.data;
   } catch (error) {
     const message = error.response.data.msg;
@@ -25,9 +28,15 @@ export const LoginUser = createAsyncThunk('user/LoginUser', async (user, thunkAP
 
 export const UserMe = createAsyncThunk('user/Me', async (_, thunkAPI) => {
   try {
+    const token = sessionStorage.getItem('token');
+
     const response = await axios.get(`${config.BASE_URL}/users/me`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
       withCredentials: true,
     });
+
     return response.data;
   } catch (error) {
     if (error.response) {
