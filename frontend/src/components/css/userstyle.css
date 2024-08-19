@@ -316,6 +316,11 @@ body {
   background-color: var(--dark-biru);
 }
 
+.home .news .box .card.double .write h1 {
+  font-size: 0.8rem;
+  color: #fff;
+}
+
 .home .news .box .card.double .write p {
   font-size: 0.8rem;
   color: #fff;
