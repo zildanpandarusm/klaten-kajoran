@@ -25,7 +25,9 @@ export const LoginUser = createAsyncThunk('user/LoginUser', async (user, thunkAP
 
 export const UserMe = createAsyncThunk('user/Me', async (_, thunkAPI) => {
   try {
-    const response = await axios.get(`${config.BASE_URL}/users/me`);
+    const response = await axios.get(`${config.BASE_URL}/users/me`, {
+      withCredentials: true,
+    });
     return response.data;
   } catch (error) {
     if (error.response) {
