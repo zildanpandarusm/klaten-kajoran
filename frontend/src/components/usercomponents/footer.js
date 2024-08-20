@@ -50,6 +50,7 @@ const Footer = () => {
           <p>
             2024 <FontAwesomeIcon className="icon" icon={faCopyright} /> Desa Kajoran
           </p>
+          <p>Didukung oleh KKN 114 UIN Suka Kelompok 213</p>
         </div>
       </div>
     </div>
