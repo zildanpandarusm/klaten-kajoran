@@ -42,7 +42,6 @@ const DetailPengumuman = () => {
   }, []);
 
   const shareUrl = window.location.href;
-  const title = 'Es Teh Gula Murni Bu Carik';
 
   return (
     <>
@@ -62,13 +61,13 @@ const DetailPengumuman = () => {
             <p className="paragraf" data-aos="fade-up" data-aos-once="true" dangerouslySetInnerHTML={{ __html: pengumuman.desc }} />
             <div className="share-buttons" data-aos="fade-up" data-aos-once="true">
               <h3>Bagikan ke:</h3>
-              <FacebookShareButton url={shareUrl} quote={title}>
+              <FacebookShareButton url={shareUrl} quote={pengumuman.title}>
                 <FacebookIcon size={32} round />
               </FacebookShareButton>
-              <TwitterShareButton url={shareUrl} title={title}>
+              <TwitterShareButton url={shareUrl} title={pengumuman.title}>
                 <TwitterIcon size={32} round />
               </TwitterShareButton>
-              <WhatsappShareButton url={shareUrl} title={title}>
+              <WhatsappShareButton url={shareUrl} title={pengumuman.title}>
                 <WhatsappIcon size={32} round />
               </WhatsappShareButton>
             </div>

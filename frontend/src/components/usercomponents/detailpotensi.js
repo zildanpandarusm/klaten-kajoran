@@ -42,7 +42,6 @@ const DetailPotensi = () => {
   }, [potensi.category]);
 
   const shareUrl = window.location.href;
-  const title = 'Es Teh Gula Murni Bu Carik';
 
   const getPotensiById = async () => {
     const response = await axios.get(`${config.BASE_URL}/potentials/${params.id}`);
@@ -80,13 +79,13 @@ const DetailPotensi = () => {
             <p className="paragraf" data-aos="fade-up" data-aos-once="true" dangerouslySetInnerHTML={{ __html: potensi.desc }} />
             <div className="share-buttons" data-aos="fade-up" data-aos-once="true">
               <h3>Bagikan ke:</h3>
-              <FacebookShareButton url={shareUrl} quote={title}>
+              <FacebookShareButton url={shareUrl} quote={potensi.title}>
                 <FacebookIcon size={32} round />
               </FacebookShareButton>
-              <TwitterShareButton url={shareUrl} title={title}>
+              <TwitterShareButton url={shareUrl} title={potensi.title}>
                 <TwitterIcon size={32} round />
               </TwitterShareButton>
-              <WhatsappShareButton url={shareUrl} title={title}>
+              <WhatsappShareButton url={shareUrl} title={potensi.title}>
                 <WhatsappIcon size={32} round />
               </WhatsappShareButton>
             </div>

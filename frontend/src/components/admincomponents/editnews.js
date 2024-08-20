@@ -112,6 +112,8 @@ const EditNews = () => {
               <option value="budaya">budaya</option>
               <option value="teknologi">teknologi</option>
               <option value="hiburan">hiburan</option>
+              <option value="teknologi">keagamaan</option>
+              <option value="teknologi">olahraga</option>
             </select>
           </div>
           <div className="formButton">

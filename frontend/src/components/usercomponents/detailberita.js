@@ -82,13 +82,13 @@ const DetailBerita = () => {
             <p className="paragraf" data-aos="fade-up" data-aos-once="true" dangerouslySetInnerHTML={{ __html: berita.desc }} />
             <div className="share-buttons" data-aos="fade-up" data-aos-once="true">
               <h3>Bagikan ke:</h3>
-              <FacebookShareButton url={shareUrl} quote={title}>
+              <FacebookShareButton url={shareUrl} quote={berita.title}>
                 <FacebookIcon size={32} round />
               </FacebookShareButton>
-              <TwitterShareButton url={shareUrl} title={title}>
+              <TwitterShareButton url={shareUrl} quote={berita.title}>
                 <TwitterIcon size={32} round />
               </TwitterShareButton>
-              <WhatsappShareButton url={shareUrl} title={title}>
+              <WhatsappShareButton url={shareUrl} quote={berita.title}>
                 <WhatsappIcon size={32} round />
               </WhatsappShareButton>
             </div>
