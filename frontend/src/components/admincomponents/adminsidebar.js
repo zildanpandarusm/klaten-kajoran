@@ -88,10 +88,6 @@ const Sidebar = () => {
           <FontAwesomeIcon className="icon" icon={faStore} />
           <p>Potensi</p>
         </Link>
-        <Link to="/admin/admin" className={`menu ${pathname === '/admin/admin' ? 'active' : ''}`}>
-          <FontAwesomeIcon className="icon" icon={faUser} />
-          <p>Admin</p>
-        </Link>
       </ul>
       <div className="logoutSidebar">
         <button onClick={handleLogout}>
