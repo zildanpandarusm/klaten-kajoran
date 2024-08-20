@@ -44,7 +44,6 @@ const Sidebar = () => {
   return (
     <aside>
       <div className="logo">
-        <img src={`${config.IMAGE_BASE_URL}/uin_logo.png`} alt="logo" />
         <img src={`${config.IMAGE_BASE_URL}/logo_klaten.png`} alt="logo" />
         {/* <h1>Klaten</h1> */}
       </div>
