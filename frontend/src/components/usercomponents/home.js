@@ -153,7 +153,7 @@ const Home = () => {
               </Link>
             ))
           ) : (
-            <p style="color: #fff">Tidak Ada Data</p>
+            <p style={{ color: '#fff' }}>Tidak Ada Data</p>
           )}
         </div>
         <Link to="/potensi" className="btnMore">
