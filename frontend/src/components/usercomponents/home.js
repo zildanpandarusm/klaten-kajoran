@@ -98,12 +98,12 @@ const Home = () => {
           // install Swiper modules
           modules={[Navigation, Pagination, A11y]} // Hapus Scrollbar dari sini
           spaceBetween={50}
-          slidesPerView={3}
+          slidesPerView={4}
           navigation
           pagination={{ clickable: true }}
           breakpoints={{
             768: {
-              slidesPerView: 3,
+              slidesPerView: 4,
             },
             480: {
               slidesPerView: 2,
