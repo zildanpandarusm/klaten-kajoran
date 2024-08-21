@@ -14,6 +14,7 @@ const EditOrganization = () => {
   const [aktif, setAktif] = useState(false);
   const [hapus, setHapus] = useState(false);
   const [file, setFile] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
   const params = useParams();
 
@@ -40,6 +41,7 @@ const EditOrganization = () => {
 
   const handleForm = async (e) => {
     e.preventDefault();
+    setIsLoading(true);
 
     try {
       const formData = new FormData();
@@ -52,7 +54,8 @@ const EditOrganization = () => {
       navigate(`/admin/struktur-pemerintahan`);
     } catch (error) {
       // setMsg(error.response.data.msg);
-    }
+    } finally {
+      setIsLoading(false); 
   };
 
   useEffect(() => {
@@ -66,33 +69,37 @@ const EditOrganization = () => {
         <p>Atur ketersediaan struktur pemerintahanmu!</p>
       </div>
       <div className="konten">
-        <form onSubmit={handleForm}>
-          <div className="formInput">
-            <label htmlFor="nama">
-              Judul <span className="wajib">*</span>
-            </label>
-            <input type="text" id="nama" placeholder="Masukkan judul" value={nama} onChange={(e) => setNama(e.target.value)} required />
-          </div>
-          <div className="formInput">
-            <label htmlFor="jabatan">
-              Deskripsi <span className="wajib">*</span>
-            </label>
-            <input type="text" id="jabatan" placeholder="Masukkan jabatan" onChange={(e) => setJabatan(e.target.value)} value={jabatan} required />
-          </div>
-          <div className="formInput">
-            <label htmlFor="foto">
-              Foto <span className="wajib">*</span>
-            </label>
-            <input type="file" id="foto" onChange={(e) => setFile(e.target.files[0])} />
-          </div>
+        {isLoading ? (
+          <div className="loading">Loading...</div>
+        ) : (
+          <form onSubmit={handleForm}>
+            <div className="formInput">
+              <label htmlFor="nama">
+                Judul <span className="wajib">*</span>
+              </label>
+              <input type="text" id="nama" placeholder="Masukkan judul" value={nama} onChange={(e) => setNama(e.target.value)} required />
+            </div>
+            <div className="formInput">
+              <label htmlFor="jabatan">
+                Deskripsi <span className="wajib">*</span>
+              </label>
+              <input type="text" id="jabatan" placeholder="Masukkan jabatan" onChange={(e) => setJabatan(e.target.value)} value={jabatan} required />
+            </div>
+            <div className="formInput">
+              <label htmlFor="foto">
+                Foto <span className="wajib">*</span>
+              </label>
+              <input type="file" id="foto" onChange={(e) => setFile(e.target.files[0])} />
+            </div>
 
-          <div className="formButton">
-            <button type="submit">Update</button>
-            <button type="button" onClick={() => listOrganization()}>
-              Batal
-            </button>
-          </div>
-        </form>
+            <div className="formButton">
+              <button type="submit">Update</button>
+              <button type="button" onClick={() => listOrganization()}>
+                Batal
+              </button>
+            </div>
+          </form>
+        )}
       </div>
     </div>
   );

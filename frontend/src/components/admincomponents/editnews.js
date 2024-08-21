@@ -22,6 +22,7 @@ const EditNews = () => {
   const [descSingkat, setDescSingkat] = useState('');
   const navigate = useNavigate();
   const params = useParams();
+  const [isLoading, setIsLoading] = useState(false);
 
   const resetVariable = () => {
     setTitle('');
@@ -48,6 +49,7 @@ const EditNews = () => {
 
   const handleForm = async (e) => {
     e.preventDefault();
+    setIsLoading(true);
 
     try {
       const formData = new FormData();
@@ -61,6 +63,8 @@ const EditNews = () => {
       navigate(`/admin/berita`);
     } catch (error) {
       // setMsg(error.response.data.msg);
+    } finally {
+      setIsLoading(false); // Selesai loading
     }
   };
 
@@ -75,54 +79,58 @@ const EditNews = () => {
         <p>Atur ketersediaan beritamu!</p>
       </div>
       <div className="konten">
-        <form onSubmit={handleForm}>
-          <div className="formInput">
-            <label htmlFor="title">
-              Judul <span className="wajib">*</span>
-            </label>
-            <input type="text" id="title" placeholder="Masukkan judul" value={title} onChange={(e) => setTitle(e.target.value)} required />
-          </div>
-          <div className="formInput">
-            <label htmlFor="foto">
-              Foto <span className="wajib">*</span>
-            </label>
-            <input type="file" id="foto" onChange={(e) => setFile(e.target.files[0])} />
-          </div>
-          <div className="formInput">
-            <label htmlFor="desc">
-              Deskripsi <span className="wajib">*</span>
-            </label>
-            <ReactQuill className="deskBox" theme="snow" onChange={setDesc} value={desc} />
-          </div>
-          <div className="formInput">
-            <label htmlFor="descSingkat">
-              Deskripsi Singkat <span className="wajib">*</span>
-            </label>
-            <ReactQuill className="deskBox" theme="snow" onChange={setDescSingkat} value={descSingkat} />
-          </div>
-          <div className="formInput">
-            <label htmlFor="kategori">
-              Kategori <span className="wajib">*</span>
-            </label>
-            <select id="kategori" value={category} onChange={(e) => setCategory(e.target.value)}>
-              <option>Pilih Kategori</option>
-              <option value="politik">politik</option>
-              <option value="ekonomi">ekonomi</option>
-              <option value="sosial">sosial</option>
-              <option value="budaya">budaya</option>
-              <option value="teknologi">teknologi</option>
-              <option value="hiburan">hiburan</option>
-              <option value="teknologi">keagamaan</option>
-              <option value="teknologi">olahraga</option>
-            </select>
-          </div>
-          <div className="formButton">
-            <button type="submit">Update</button>
-            <button type="button" onClick={() => listNews()}>
-              Batal
-            </button>
-          </div>
-        </form>
+        {isLoading ? (
+          <div className="loading">Loading...</div>
+        ) : (
+          <form onSubmit={handleForm}>
+            <div className="formInput">
+              <label htmlFor="title">
+                Judul <span className="wajib">*</span>
+              </label>
+              <input type="text" id="title" placeholder="Masukkan judul" value={title} onChange={(e) => setTitle(e.target.value)} required />
+            </div>
+            <div className="formInput">
+              <label htmlFor="foto">
+                Foto <span className="wajib">*</span>
+              </label>
+              <input type="file" id="foto" onChange={(e) => setFile(e.target.files[0])} />
+            </div>
+            <div className="formInput">
+              <label htmlFor="desc">
+                Deskripsi <span className="wajib">*</span>
+              </label>
+              <ReactQuill className="deskBox" theme="snow" onChange={setDesc} value={desc} />
+            </div>
+            <div className="formInput">
+              <label htmlFor="descSingkat">
+                Deskripsi Singkat <span className="wajib">*</span>
+              </label>
+              <ReactQuill className="deskBox" theme="snow" onChange={setDescSingkat} value={descSingkat} />
+            </div>
+            <div className="formInput">
+              <label htmlFor="kategori">
+                Kategori <span className="wajib">*</span>
+              </label>
+              <select id="kategori" value={category} onChange={(e) => setCategory(e.target.value)}>
+                <option>Pilih Kategori</option>
+                <option value="politik">politik</option>
+                <option value="ekonomi">ekonomi</option>
+                <option value="sosial">sosial</option>
+                <option value="budaya">budaya</option>
+                <option value="teknologi">teknologi</option>
+                <option value="hiburan">hiburan</option>
+                <option value="teknologi">keagamaan</option>
+                <option value="teknologi">olahraga</option>
+              </select>
+            </div>
+            <div className="formButton">
+              <button type="submit">Update</button>
+              <button type="button" onClick={() => listNews()}>
+                Batal
+              </button>
+            </div>
+          </form>
+        )}
       </div>
     </div>
   );

@@ -22,6 +22,7 @@ const EditPotentials = () => {
   const [aktif, setAktif] = useState(false);
   const [hapus, setHapus] = useState(false);
   const [file, setFile] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
   const params = useParams();
 
@@ -52,6 +53,7 @@ const EditPotentials = () => {
 
   const handleForm = async (e) => {
     e.preventDefault();
+    setIsLoading(true);
 
     try {
       const formData = new FormData();
@@ -68,6 +70,8 @@ const EditPotentials = () => {
       navigate(`/admin/potensi`);
     } catch (error) {
       // setMsg(error.response.data.msg);
+    } finally {
+      setIsLoading(false); // Selesai loading
     }
   };
 
@@ -82,61 +86,65 @@ const EditPotentials = () => {
         <p>Atur ketersediaan beritamu!</p>
       </div>
       <div className="konten">
-        <form onSubmit={handleForm}>
-          <div className="formInput">
-            <label htmlFor="title">
-              Judul <span className="wajib">*</span>
-            </label>
-            <input type="text" id="title" placeholder="Masukkan judul" value={title} onChange={(e) => setTitle(e.target.value)} required />
-          </div>
-          <div className="formInput">
-            <label htmlFor="phone">
-              Telepon <span className="wajib">*</span>
-            </label>
-            <input type="text" id="phone" placeholder="Masukkan telepon" value={phone} onChange={(e) => setPhone(e.target.value)} required />
-          </div>
-          <div className="formInput">
-            <label htmlFor="maps">
-              Peta <span className="wajib">*</span>
-            </label>
-            <input type="text" id="maps" placeholder="Masukkan peta" value={maps} onChange={(e) => setMaps(e.target.value)} required />
-          </div>
-          <div className="formInput">
-            <label htmlFor="kategori">
-              Kategori <span className="wajib">*</span>
-            </label>
-            <select id="kategori" value={category} onChange={(e) => setCategory(e.target.value)}>
-              <option>Pilih Kategori</option>
-              <option value="umkm">UMKM</option>
-              <option value="bumdes">Bumdes</option>
-              <option value="wisata">Wisata</option>
-            </select>
-          </div>
-          <div className="formInput">
-            <label htmlFor="foto">
-              Foto <span className="wajib">*</span>
-            </label>
-            <input type="file" id="foto" onChange={(e) => setFile(e.target.files[0])} />
-          </div>
-          <div className="formInput">
-            <label htmlFor="desc">
-              Deskripsi <span className="wajib">*</span>
-            </label>
-            <ReactQuill className="deskBox" theme="snow" onChange={setDesc} value={desc} />
-          </div>
-          <div className="formInput">
-            <label htmlFor="descSingkat">
-              Deskripsi Singkat <span className="wajib">*</span>
-            </label>
-            <ReactQuill className="deskBox" theme="snow" onChange={setDescSingkat} value={descSingkat} />
-          </div>
-          <div className="formButton">
-            <button type="submit">Update</button>
-            <button type="button" onClick={() => listPotentials()}>
-              Batal
-            </button>
-          </div>
-        </form>
+        {isLoading ? (
+          <div className="loading">Loading...</div>
+        ) : (
+          <form onSubmit={handleForm}>
+            <div className="formInput">
+              <label htmlFor="title">
+                Judul <span className="wajib">*</span>
+              </label>
+              <input type="text" id="title" placeholder="Masukkan judul" value={title} onChange={(e) => setTitle(e.target.value)} required />
+            </div>
+            <div className="formInput">
+              <label htmlFor="phone">
+                Telepon <span className="wajib">*</span>
+              </label>
+              <input type="text" id="phone" placeholder="Masukkan telepon" value={phone} onChange={(e) => setPhone(e.target.value)} required />
+            </div>
+            <div className="formInput">
+              <label htmlFor="maps">
+                Peta <span className="wajib">*</span>
+              </label>
+              <input type="text" id="maps" placeholder="Masukkan peta" value={maps} onChange={(e) => setMaps(e.target.value)} required />
+            </div>
+            <div className="formInput">
+              <label htmlFor="kategori">
+                Kategori <span className="wajib">*</span>
+              </label>
+              <select id="kategori" value={category} onChange={(e) => setCategory(e.target.value)}>
+                <option>Pilih Kategori</option>
+                <option value="umkm">UMKM</option>
+                <option value="bumdes">Bumdes</option>
+                <option value="wisata">Wisata</option>
+              </select>
+            </div>
+            <div className="formInput">
+              <label htmlFor="foto">
+                Foto <span className="wajib">*</span>
+              </label>
+              <input type="file" id="foto" onChange={(e) => setFile(e.target.files[0])} />
+            </div>
+            <div className="formInput">
+              <label htmlFor="desc">
+                Deskripsi <span className="wajib">*</span>
+              </label>
+              <ReactQuill className="deskBox" theme="snow" onChange={setDesc} value={desc} />
+            </div>
+            <div className="formInput">
+              <label htmlFor="descSingkat">
+                Deskripsi Singkat <span className="wajib">*</span>
+              </label>
+              <ReactQuill className="deskBox" theme="snow" onChange={setDescSingkat} value={descSingkat} />
+            </div>
+            <div className="formButton">
+              <button type="submit">Update</button>
+              <button type="button" onClick={() => listPotentials()}>
+                Batal
+              </button>
+            </div>
+          </form>
+        )}
       </div>
     </div>
   );

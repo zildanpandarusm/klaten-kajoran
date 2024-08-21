@@ -21,6 +21,7 @@ const AddPotential = () => {
   const [aktif, setAktif] = useState(false);
   const [hapus, setHapus] = useState(false);
   const [file, setFile] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
 
   const resetVariable = () => {
@@ -34,6 +35,7 @@ const AddPotential = () => {
 
   const handleForm = async (e) => {
     e.preventDefault();
+    setIsLoading(true);
 
     try {
       const formData = new FormData();
@@ -50,6 +52,8 @@ const AddPotential = () => {
       navigate(`/admin/potensi`);
     } catch (error) {
       // setMsg(error.response.data.msg);
+    } finally {
+      setIsLoading(false); // Selesai loading
     }
   };
 
@@ -60,61 +64,65 @@ const AddPotential = () => {
         <p>Atur ketersediaan potensimu!</p>
       </div>
       <div className="konten">
-        <form onSubmit={handleForm}>
-          <div className="formInput">
-            <label htmlFor="title">
-              Judul <span className="wajib">*</span>
-            </label>
-            <input type="text" id="title" placeholder="Masukkan judul" onChange={(e) => setTitle(e.target.value)} required />
-          </div>
-          <div className="formInput">
-            <label htmlFor="phone">
-              Telepon <span className="wajib">*</span>
-            </label>
-            <input type="text" id="phone" placeholder="Masukkan telepon" onChange={(e) => setPhone(e.target.value)} required />
-          </div>
-          <div className="formInput">
-            <label htmlFor="maps">
-              Peta <span className="wajib">*</span>
-            </label>
-            <input type="text" id="maps" placeholder="Masukkan peta" onChange={(e) => setMaps(e.target.value)} required />
-          </div>
-          <div className="formInput">
-            <label htmlFor="kategori">
-              Kategori <span className="wajib">*</span>
-            </label>
-            <select id="kategori" onChange={(e) => setCategory(e.target.value)}>
-              <option>Pilih Kategori</option>
-              <option value="umkm">UMKM</option>
-              <option value="bumdes">Bumdes</option>
-              <option value="wisata">Wisata</option>
-            </select>
-          </div>
-          <div className="formInput">
-            <label htmlFor="foto">
-              Foto <span className="wajib">*</span>
-            </label>
-            <input type="file" id="foto" onChange={(e) => setFile(e.target.files[0])} />
-          </div>
-          <div className="formInput">
-            <label htmlFor="desc">
-              Deskripsi <span className="wajib">*</span>
-            </label>
-            <ReactQuill className="deskBox" theme="snow" onChange={setDesc} />
-          </div>
-          <div className="formInput">
-            <label htmlFor="descSingkat">
-              Deskripsi Singkat <span className="wajib">*</span>
-            </label>
-            <ReactQuill className="deskBox" theme="snow" onChange={setDescSingkat} />
-          </div>
-          <div className="formButton">
-            <button type="submit">Tambah</button>
-            <button type="button" onClick={() => listPotential()}>
-              Batal
-            </button>
-          </div>
-        </form>
+        {isLoading ? (
+          <div className="loading">Loading...</div> // Tanda loading
+        ) : (
+          <form onSubmit={handleForm}>
+            <div className="formInput">
+              <label htmlFor="title">
+                Judul <span className="wajib">*</span>
+              </label>
+              <input type="text" id="title" placeholder="Masukkan judul" onChange={(e) => setTitle(e.target.value)} required />
+            </div>
+            <div className="formInput">
+              <label htmlFor="phone">
+                Telepon <span className="wajib">*</span>
+              </label>
+              <input type="text" id="phone" placeholder="Masukkan telepon" onChange={(e) => setPhone(e.target.value)} required />
+            </div>
+            <div className="formInput">
+              <label htmlFor="maps">
+                Peta <span className="wajib">*</span>
+              </label>
+              <input type="text" id="maps" placeholder="Masukkan peta" onChange={(e) => setMaps(e.target.value)} required />
+            </div>
+            <div className="formInput">
+              <label htmlFor="kategori">
+                Kategori <span className="wajib">*</span>
+              </label>
+              <select id="kategori" onChange={(e) => setCategory(e.target.value)}>
+                <option>Pilih Kategori</option>
+                <option value="umkm">UMKM</option>
+                <option value="bumdes">Bumdes</option>
+                <option value="wisata">Wisata</option>
+              </select>
+            </div>
+            <div className="formInput">
+              <label htmlFor="foto">
+                Foto <span className="wajib">*</span>
+              </label>
+              <input type="file" id="foto" onChange={(e) => setFile(e.target.files[0])} />
+            </div>
+            <div className="formInput">
+              <label htmlFor="desc">
+                Deskripsi <span className="wajib">*</span>
+              </label>
+              <ReactQuill className="deskBox" theme="snow" onChange={setDesc} />
+            </div>
+            <div className="formInput">
+              <label htmlFor="descSingkat">
+                Deskripsi Singkat <span className="wajib">*</span>
+              </label>
+              <ReactQuill className="deskBox" theme="snow" onChange={setDescSingkat} />
+            </div>
+            <div className="formButton">
+              <button type="submit">Tambah</button>
+              <button type="button" onClick={() => listPotential()}>
+                Batal
+              </button>
+            </div>
+          </form>
+        )}
       </div>
     </div>
   );
