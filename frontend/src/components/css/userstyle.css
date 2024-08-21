@@ -231,6 +231,77 @@ body {
 
 /* Home */
 
+.pemerintahan {
+  height: fit-content;
+  padding: 2rem 1rem;
+  background-color: var(--dark-biru);
+}
+
+.pemerintahan h1 {
+  margin: auto;
+  text-align: center;
+  font-size: 3rem;
+  color: var(--white);
+}
+
+.pemerintahan h3 {
+  font-size: 1.6rem;
+  text-align: center;
+  font-weight: 300;
+  color: var(--white);
+}
+
+.pemerintahan .swiper {
+  margin: 2rem 0;
+  padding: 0 3rem 3rem;
+}
+
+.pemerintahan .swiperCard {
+  height: fit-content;
+  width: 100%;
+}
+
+.pemerintahan .swiperCard img {
+  object-fit: cover;
+  width: 100%;
+  border-radius: 1rem;
+}
+
+.pemerintahan .swiperCard h1 {
+  margin: auto;
+  text-align: center;
+  font-size: 2rem;
+  color: var(--white);
+}
+
+.pemerintahan .swiperCard p {
+  color: var(--white);
+  text-align: center;
+  font-size: 1.1rem;
+}
+
+.swiper-button-prev,
+.swiper-button-next {
+  color: #fff !important;
+  width: 10px !important;
+  height: 10px !important;
+}
+
+.swiper-button-prev:hover,
+.swiper-button-next:hover {
+  color: var(--blue-light) !important;
+}
+
+.swiper-pagination-bullet {
+  background-color: #fff !important; /* Ubah warna titik pagination */
+  opacity: 0.9 !important;
+}
+
+.swiper-pagination-bullet-active {
+  background-color: var(--blue-light) !important;
+  opacity: 1 !important;
+}
+
 .home .news {
   padding: 2rem;
 }
@@ -2268,14 +2339,16 @@ body {
   .home .news h1,
   .potential h1,
   .announce h1,
-  .maps h1 {
+  .maps h1,
+  .pemerintahan h1 {
     font-size: 2.2rem;
   }
 
   .home .news h3,
   .potential h3,
   .announce h3,
-  .maps h3 {
+  .maps h3,
+  .pemerintahan h3 {
     font-size: 1.3rem;
   }
 }

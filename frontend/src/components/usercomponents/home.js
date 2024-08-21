@@ -7,6 +7,12 @@ import Aos from 'aos';
 import 'aos/dist/aos.css';
 import Footer from './footer';
 import axios, { all } from 'axios';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+import 'swiper/css/scrollbar';
+import { Navigation, Pagination, Scrollbar, A11y } from 'swiper/modules';
 
 const Home = () => {
   const [berita25, setBerita25] = useState([]);
@@ -73,6 +79,66 @@ const Home = () => {
           "Selamat datang di Desa Kajoran, sebuah desa yang penuh dengan potensi dan semangat kebersamaan. Masyarakat Desa Kajoran dikenal akan keramahannya dan kerja kerasnya dalam mengembangkan berbagai usaha kecil dan menengah yang
           menjadi tulang punggung perekonomian desa. Bersama-sama, mari kita wujudkan Desa Kajoran yang lebih maju dan sejahtera, di mana tradisi dan kemajuan berjalan beriringan."
         </p>
+      </div>
+
+      <div className="pemerintahan">
+        <h1>Struktur Pemerintahan</h1>
+        <h3>Profil Kepemimpinan Desa</h3>
+        <Swiper
+          className="swiper"
+          // install Swiper modules
+          modules={[Navigation, Pagination, A11y]} // Hapus Scrollbar dari sini
+          spaceBetween={50}
+          slidesPerView={3}
+          navigation
+          pagination={{ clickable: true }}
+          breakpoints={{
+            768: {
+              slidesPerView: 3,
+            },
+            480: {
+              slidesPerView: 2,
+            },
+            0: {
+              slidesPerView: 1,
+            },
+          }}
+          onSwiper={(swiper) => console.log(swiper)}
+          onSlideChange={() => console.log('slide change')}
+        >
+          <SwiperSlide className="swiperCard">
+            <img src={`${config.IMAGE_BASE_URL}/kajoran.JPG`} alt="kajoran" />
+
+            <div className="write">
+              <h1>Kepala Desa</h1>
+              <p>Yulianto Nugroho Dwi Puspito Warjati</p>
+            </div>
+          </SwiperSlide>
+          <SwiperSlide className="swiperCard">
+            <img src={`${config.IMAGE_BASE_URL}/kajoran.JPG`} alt="kajoran" />
+
+            <div className="write">
+              <h1>Kepala Desa</h1>
+              <p>Yulianto Nugroho</p>
+            </div>
+          </SwiperSlide>
+          <SwiperSlide className="swiperCard">
+            <img src={`${config.IMAGE_BASE_URL}/kajoran.JPG`} alt="kajoran" />
+
+            <div className="write">
+              <h1>Sekretaris Desa</h1>
+              <p>Meyka Nugroho</p>
+            </div>
+          </SwiperSlide>
+          <SwiperSlide className="swiperCard">
+            <img src={`${config.IMAGE_BASE_URL}/kajoran.JPG`} alt="kajoran" />
+
+            <div className="write">
+              <h1>Bendahara</h1>
+              <p>Marista</p>
+            </div>
+          </SwiperSlide>
+        </Swiper>
       </div>
 
       <div className="news">
