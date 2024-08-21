@@ -2351,4 +2351,12 @@ body {
   .pemerintahan h3 {
     font-size: 1.3rem;
   }
+
+  .pemerintahan .swiperCard h1 {
+    font-size: 1.8rem;
+  }
+
+  .pemerintahan .swiperCard p {
+    font-size: 1.2rem;
+  }
 }
