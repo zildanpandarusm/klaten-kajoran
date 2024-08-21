@@ -122,7 +122,6 @@ const Potentials = () => {
         _id: item._id,
         title: item.title,
         desc: item.desc,
-        descSingkat: item.descSingkat,
         imageUrl: item.imageUrl,
         maps: item.maps,
         phone: item.phone,
@@ -146,10 +145,6 @@ const Potentials = () => {
       {
         Header: 'Deskripsi',
         accessor: 'desc',
-      },
-      {
-        Header: 'Deskripsi Singkat',
-        accessor: 'descSingkat',
       },
       {
         Header: 'Telepon',
