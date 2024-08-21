@@ -44,7 +44,6 @@ const DetailBerita = () => {
   }, [berita.category]);
 
   const shareUrl = window.location.href;
-  const title = 'Es Teh Gula Murni Bu Carik';
 
   const getBeritaById = async () => {
     const response = await axios.get(`${config.BASE_URL}/posts/${params.id}`);

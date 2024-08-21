@@ -126,7 +126,7 @@ const Home = () => {
             </Link>
           )}
         </div>
-        <Link to="/" className="btnMore">
+        <Link to="/berita" className="btnMore">
           Lihat Selengkapnya
         </Link>
       </div>
@@ -152,7 +152,7 @@ const Home = () => {
             </Link>
           ))}
         </div>
-        <Link to="/" className="btnMore">
+        <Link to="/potensi" className="btnMore">
           Lihat Selengkapnya
         </Link>
       </div>
@@ -160,14 +160,18 @@ const Home = () => {
         <h1>Pengumuman</h1>
         <h3>Informasi dan pemberitahuan penting untuk warga desa.</h3>
         <div className="box">
-          {announcements.map((item) => (
-            <Link className="card" data-aos="fade-up" data-aos-once="true" to={`/pengumuman/${item._id}`}>
-              <h2>{item.title}</h2>
-              <p>{item.formattedDate}</p>
-            </Link>
-          ))}
+          {announcements.length > 0 ? (
+            announcements.map((item) => (
+              <Link key={item._id} className="card" data-aos="fade-up" data-aos-once="true" to={`/pengumuman/${item._id}`}>
+                <h2>{item.title}</h2>
+                <p>{item.formattedDate}</p>
+              </Link>
+            ))
+          ) : (
+            <p>Tidak Ada</p>
+          )}
         </div>
-        <Link to="/" className="btnMore">
+        <Link to="/pengumuman" className="btnMore">
           Lihat Selengkapnya
         </Link>
       </div>
