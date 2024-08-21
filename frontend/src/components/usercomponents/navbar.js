@@ -5,10 +5,13 @@ import { Link, useLocation } from 'react-router-dom';
 import '../css/userstyle.css';
 import { useNavigate } from 'react-router-dom';
 import config from '../../utils/config';
+import axios from 'axios';
 
 const Navbar = ({ page }) => {
   const [aktif, setAktif] = useState(false);
   const [keyword, setKeyword] = useState('');
+  const [email, setEmail] = useState('');
+  const [telp, setTelp] = useState('');
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -22,6 +25,22 @@ const Navbar = ({ page }) => {
       secNav.classList.add('aktif');
     }
   };
+
+  const getAbout = async () => {
+    try {
+      const response = await axios.get(`${config.BASE_URL}/about`);
+      setEmail(response.data.data[0].email);
+      setTelp(response.data.data[0].telp);
+
+      console.log(response.data.data.length);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  useEffect(() => {
+    getAbout();
+  }, []);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -91,10 +110,10 @@ const Navbar = ({ page }) => {
         <div className="navNol">
           <div className="info">
             <h2>
-              <FontAwesomeIcon icon={faEnvelope} /> kajoran@gmail.com
+              <FontAwesomeIcon icon={faEnvelope} /> {email}
             </h2>
             <h2>
-              <FontAwesomeIcon icon={faPhone} /> 08123456789
+              <FontAwesomeIcon icon={faPhone} /> {telp}
             </h2>
           </div>
           <h2>

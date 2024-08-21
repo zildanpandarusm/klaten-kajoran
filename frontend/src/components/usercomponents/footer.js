@@ -5,8 +5,26 @@ import { Link } from 'react-router-dom';
 import '../css/userstyle.css';
 import { useNavigate } from 'react-router-dom';
 import config from '../../utils/config';
+import axios from 'axios';
 
 const Footer = () => {
+  const [email, setEmail] = useState('');
+  const [telp, setTelp] = useState('');
+  const getAbout = async () => {
+    try {
+      const response = await axios.get(`${config.BASE_URL}/about`);
+      setEmail(response.data.data[0].email);
+      setTelp(response.data.data[0].telp);
+
+      console.log(response.data.data.length);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  useEffect(() => {
+    getAbout();
+  }, []);
   return (
     <div>
       <div className="footer">
@@ -38,10 +56,10 @@ const Footer = () => {
           <div className="third">
             <div className="info">
               <h2>
-                <FontAwesomeIcon icon={faEnvelope} /> kajoran@gmail.com
+                <FontAwesomeIcon icon={faEnvelope} /> {email}
               </h2>
               <h2>
-                <FontAwesomeIcon icon={faPhone} /> 08123456789
+                <FontAwesomeIcon icon={faPhone} /> {telp}
               </h2>
             </div>
           </div>
