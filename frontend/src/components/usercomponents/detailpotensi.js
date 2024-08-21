@@ -103,23 +103,27 @@ const DetailPotensi = () => {
         <div className="third">
           <h1>Potensi Terkait</h1>
           <div className="box">
-            {potensiTerkait.map((item) => (
-              <Link className="card" data-aos="zoom-in-down" data-aos-once="true" to={`/potensi/${item._id}`} onClick={() => handleClick(item._id)}>
-                <img src={item.imageUrl} alt="kajoran" />
-                <div className="write">
-                  <h2>{item.title}</h2>
-                  <h3>{item.category}</h3>
-                  <div className="bottom">
-                    <div className="btn">
-                      <Link>
-                        <FontAwesomeIcon className="icon" icon={faArrowRight} />
-                      </Link>
+            {potensiTerkait.length > 0 ? (
+              potensiTerkait.map((item) => (
+                <Link key={item._id} className="card" data-aos="zoom-in-down" data-aos-once="true" to={`/potensi/${item._id}`} onClick={() => handleClick(item._id)}>
+                  <img src={item.imageUrl} alt="kajoran" />
+                  <div className="write">
+                    <h2>{item.title}</h2>
+                    <h3>{item.category}</h3>
+                    <div className="bottom">
+                      <div className="btn">
+                        <Link>
+                          <FontAwesomeIcon className="icon" icon={faArrowRight} />
+                        </Link>
+                      </div>
+                      <p>Baca Selengkapnya</p>
                     </div>
-                    <p>Baca Selengkapnya</p>
                   </div>
-                </div>
-              </Link>
-            ))}
+                </Link>
+              ))
+            ) : (
+              <p>Tidak Ada Data</p>
+            )}
           </div>
         </div>
       </div>

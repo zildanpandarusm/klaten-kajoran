@@ -77,24 +77,29 @@ const Potensi = () => {
         </p>
         <h1>Potensi</h1>
         <div className="box">
-          {currentItems.map((item, index) => (
-            <Link key={index} className="card" data-aos="fade-up" data-aos-once="true" to={`/potensi/${item._id}`}>
-              <h3>{item.category}</h3>
-              <div className="img">
-                <img src={item.imageUrl} alt={item.title} />
-              </div>
-
-              <div className="write">
-                <h2>{item.title}</h2>
-                <p dangerouslySetInnerHTML={{ __html: item.descSingkat }} />
-                <div className="more">
-                  <p>
-                    Baca Selengkapnya <FontAwesomeIcon className="icon" icon={faChevronRight} />
-                  </p>
+          {currentItems.length > 0 ? (
+            currentItems.map((item, index) => (
+              <Link key={index} className="card" data-aos="fade-up" data-aos-once="true" to={`/potensi/${item._id}`}>
+                <h3>{item.category}</h3>
+                <div className="img">
+                  <img src={item.imageUrl} alt={item.title} />
                 </div>
-              </div>
-            </Link>
-          ))}
+
+                <div className="write">
+                  <h2>{item.title}</h2>
+                  <p dangerouslySetInnerHTML={{ __html: item.descSingkat }} />
+                  <div className="more">
+                    <p>
+                      Baca Selengkapnya <FontAwesomeIcon className="icon" icon={faChevronRight} />
+                    </p>
+                  </div>
+                </div>
+              </Link>
+            ))
+          ) : (
+            <p>Tidak Ada Data</p>
+          )}
+
           <div className="paginate">
             <ReactPaginate
               previousLabel={'Previous'}
@@ -113,30 +118,44 @@ const Potensi = () => {
         <div className="bottom">
           <div className="column">
             <h2>UMKM Terbaru</h2>
-            {potensiUmkm.map((item) => (
-              <Link className="card" data-aos="fade-up" data-aos-once="true" to={`/potensi/${item._id}`}>
-                <img src={item.imageUrl} alt="logo" />
-                <h3>{item.title}</h3>
-              </Link>
-            ))}
+            {potensiUmkm.length > 0 ? (
+              potensiUmkm.map((item) => (
+                <Link key={item._id} className="card" data-aos="fade-up" data-aos-once="true" to={`/potensi/${item._id}`}>
+                  <img src={item.imageUrl} alt="logo" />
+                  <h3>{item.title}</h3>
+                </Link>
+              ))
+            ) : (
+              <p>Tidak Ada Data</p>
+            )}
           </div>
+
           <div className="column">
             <h2>Bumdes Terbaru</h2>
-            {potensiBumdes.map((item) => (
-              <Link className="card" data-aos="fade-up" data-aos-once="true" to={`/potensi/${item._id}`}>
-                <img src={item.imageUrl} alt="logo" />
-                <h3>{item.title}</h3>
-              </Link>
-            ))}
+            {potensiBumdes.length > 0 ? (
+              potensiBumdes.map((item) => (
+                <Link key={item._id} className="card" data-aos="fade-up" data-aos-once="true" to={`/potensi/${item._id}`}>
+                  <img src={item.imageUrl} alt="logo" />
+                  <h3>{item.title}</h3>
+                </Link>
+              ))
+            ) : (
+              <p>Tidak Ada Data</p>
+            )}
           </div>
+
           <div className="column">
             <h2>Wisata Terbaru</h2>
-            {potensiWisata.map((item) => (
-              <Link className="card" data-aos="fade-up" data-aos-once="true" to={`/potensi/${item._id}`}>
-                <img src={item.imageUrl} alt="logo" />
-                <h3>{item.title}</h3>
-              </Link>
-            ))}
+            {potensiWisata.length > 0 ? (
+              potensiWisata.map((item) => (
+                <Link key={item._id} className="card" data-aos="fade-up" data-aos-once="true" to={`/potensi/${item._id}`}>
+                  <img src={item.imageUrl} alt="logo" />
+                  <h3>{item.title}</h3>
+                </Link>
+              ))
+            ) : (
+              <p>Tidak Ada Data</p>
+            )}
           </div>
         </div>
       </div>

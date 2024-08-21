@@ -134,23 +134,27 @@ const Home = () => {
         <h1>Potensi</h1>
         <h3>Keunggulan alam, ekonomi, dan budaya desa kami.</h3>
         <div className="box">
-          {potentials.map((item) => (
-            <Link className="card" data-aos="zoom-in-down" data-aos-once="true" to={`/potensi/${item._id}`}>
-              <img src={item.imageUrl} alt="kajoran" />
-              <div className="write">
-                <h2>{item.title}</h2>
-                <h3>{item.category}</h3>
-                <div className="bottom">
-                  <div className="btn">
-                    <Link>
-                      <FontAwesomeIcon className="icon" icon={faArrowRight} />
-                    </Link>
+          {potentials.length > 0 ? (
+            potentials.map((item) => (
+              <Link key={item._id} className="card" data-aos="zoom-in-down" data-aos-once="true" to={`/potensi/${item._id}`}>
+                <img src={item.imageUrl} alt="kajoran" />
+                <div className="write">
+                  <h2>{item.title}</h2>
+                  <h3>{item.category}</h3>
+                  <div className="bottom">
+                    <div className="btn">
+                      <Link>
+                        <FontAwesomeIcon className="icon" icon={faArrowRight} />
+                      </Link>
+                    </div>
+                    <p>Baca Selengkapnya</p>
                   </div>
-                  <p>Baca Selengkapnya</p>
                 </div>
-              </div>
-            </Link>
-          ))}
+              </Link>
+            ))
+          ) : (
+            <p style="color: #fff">Tidak Ada Data</p>
+          )}
         </div>
         <Link to="/potensi" className="btnMore">
           Lihat Selengkapnya
@@ -168,7 +172,7 @@ const Home = () => {
               </Link>
             ))
           ) : (
-            <p>Tidak Ada</p>
+            <p>Tidak Ada Data</p>
           )}
         </div>
         <Link to="/pengumuman" className="btnMore">

@@ -45,23 +45,26 @@ const Pengumuman = () => {
         </p>
         <h1>Pengumuman</h1>
         <div className="box">
-          {currentItems.map((item, index) => (
-            <Link key={index} className="card" data-aos="fade-up" data-aos-once="true" to={`/pengumuman/${item._id}`}>
-              <div className="write">
-                <h2>{item.title}</h2>
-                <p>
-                  <FontAwesomeIcon className="icon" icon={faMapLocation} />
-
-                  {item.formattedDate}
-                </p>
-              </div>
-              <div className="more">
-                <p>
-                  Baca Selengkapnya <FontAwesomeIcon className="icon" icon={faChevronRight} />
-                </p>
-              </div>
-            </Link>
-          ))}
+          {currentItems.length > 0 ? (
+            currentItems.map((item, index) => (
+              <Link key={index} className="card" data-aos="fade-up" data-aos-once="true" to={`/pengumuman/${item._id}`}>
+                <div className="write">
+                  <h2>{item.title}</h2>
+                  <p>
+                    <FontAwesomeIcon className="icon" icon={faMapLocation} />
+                    {item.formattedDate}
+                  </p>
+                </div>
+                <div className="more">
+                  <p>
+                    Baca Selengkapnya <FontAwesomeIcon className="icon" icon={faChevronRight} />
+                  </p>
+                </div>
+              </Link>
+            ))
+          ) : (
+            <p>Tidak Ada Data</p>
+          )}
           <div className="paginate">
             <ReactPaginate
               previousLabel={'Previous'}
