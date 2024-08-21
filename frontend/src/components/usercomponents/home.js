@@ -12,7 +12,7 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
-import { Navigation, Pagination, Scrollbar, A11y } from 'swiper/modules';
+import { Navigation, Pagination, A11y } from 'swiper/modules';
 
 const Home = () => {
   const [berita25, setBerita25] = useState([]);
@@ -198,7 +198,7 @@ const Home = () => {
       </div>
       <div className="potential">
         <h1>Potensi</h1>
-        <h3>Keunggulan alam, ekonomi, dan budaya desa kami.</h3>
+        <h3>Keunggulan alam, ekonomi, dan budaya desa.</h3>
         <div className="box">
           {potentials.length > 0 ? (
             potentials.map((item) => (
