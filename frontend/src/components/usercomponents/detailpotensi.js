@@ -50,12 +50,18 @@ const DetailPotensi = () => {
 
   const getPotensi = async () => {
     const response = await axios.get(`${config.BASE_URL}/potentials`);
-    setPotensiTerbaru(response.data.data);
+    const allData = response.data.data;
+
+    const Data = allData.slice(0, 9);
+    setPotensiTerbaru(Data);
   };
 
   const getPotensiTerkait = async () => {
     const response = await axios.get(`${config.BASE_URL}/potentials/kategori/${potensi.category}/${params.id}`);
-    setPotensiTerkait(response.data.data);
+    const allData = response.data.data;
+
+    const Data = allData.slice(0, 4);
+    setPotensiTerkait(Data);
   };
 
   return (

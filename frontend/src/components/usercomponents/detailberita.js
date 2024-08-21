@@ -52,12 +52,18 @@ const DetailBerita = () => {
 
   const getBerita = async () => {
     const response = await axios.get(`${config.BASE_URL}/posts`);
-    setBeritaTerbaru(response.data.data);
+    const allData = response.data.data;
+
+    const Data = allData.slice(0, 9);
+    setBeritaTerbaru(Data);
   };
 
   const getBeritaTerkait = async () => {
     const response = await axios.get(`${config.BASE_URL}/posts/kategori/${berita.category}/${params.id}`);
-    setBeritaTerkait(response.data.data);
+    const allData = response.data.data;
+
+    const Data = allData.slice(0, 3);
+    setBeritaTerkait(Data);
   };
 
   return (
