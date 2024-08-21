@@ -20,13 +20,13 @@ const Home = () => {
   const [berita6, setBerita6] = useState({});
   const [potentials, setPotentials] = useState([]);
   const [announcements, setAnnouncements] = useState([]);
+  const [organization, setOrganization] = useState([]);
 
   const getBerita = async () => {
     const response = await axios.get(`${config.BASE_URL}/posts`);
     const allData = response.data.data;
 
     if (allData.length >= 6) {
-      // Jika data lebih dari atau sama dengan 6
       const firstData = allData.slice(0, 1)[0];
       const twoFiveData = allData.slice(1, 5);
       const lastData = allData.slice(5, 6)[0];
@@ -35,7 +35,6 @@ const Home = () => {
       setBerita25(twoFiveData);
       setBerita6(lastData);
     } else {
-      // Jika data kurang dari 6, ambil semua data
       setBerita1(allData[0] || {});
       setBerita25(allData.length > 1 ? allData.slice(1) : []);
       setBerita6(allData[allData.length - 1] || {});
@@ -62,6 +61,15 @@ const Home = () => {
     setAnnouncements(Data);
   };
 
+  const getOrganization = async () => {
+    try {
+      const response = await axios.get(`${config.BASE_URL}/organization`);
+      setOrganization(response.data.data);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   useEffect(() => {
     Aos.init();
   }, []);
@@ -70,6 +78,7 @@ const Home = () => {
     getBerita();
     getPotentials();
     getAnnouncements();
+    getOrganization();
   }, []);
 
   return (
@@ -106,38 +115,16 @@ const Home = () => {
           onSwiper={(swiper) => console.log(swiper)}
           onSlideChange={() => console.log('slide change')}
         >
-          <SwiperSlide className="swiperCard">
-            <img src={`${config.IMAGE_BASE_URL}/kajoran.JPG`} alt="kajoran" />
+          {organization.map((item) => (
+            <SwiperSlide className="swiperCard">
+              <img src={item.imageUrl} alt="kajoran" />
 
-            <div className="write">
-              <h1>Kepala Desa</h1>
-              <p>Yulianto Nugroho Dwi Puspito Warjati</p>
-            </div>
-          </SwiperSlide>
-          <SwiperSlide className="swiperCard">
-            <img src={`${config.IMAGE_BASE_URL}/kajoran.JPG`} alt="kajoran" />
-
-            <div className="write">
-              <h1>Kepala Desa</h1>
-              <p>Yulianto Nugroho</p>
-            </div>
-          </SwiperSlide>
-          <SwiperSlide className="swiperCard">
-            <img src={`${config.IMAGE_BASE_URL}/kajoran.JPG`} alt="kajoran" />
-
-            <div className="write">
-              <h1>Sekretaris Desa</h1>
-              <p>Meyka Nugroho</p>
-            </div>
-          </SwiperSlide>
-          <SwiperSlide className="swiperCard">
-            <img src={`${config.IMAGE_BASE_URL}/kajoran.JPG`} alt="kajoran" />
-
-            <div className="write">
-              <h1>Bendahara</h1>
-              <p>Marista</p>
-            </div>
-          </SwiperSlide>
+              <div className="write">
+                <h1>{item.jabatan}</h1>
+                <p>{item.nama}</p>
+              </div>
+            </SwiperSlide>
+          ))}
         </Swiper>
       </div>
 
