@@ -65,7 +65,7 @@ const AddAnnouncement = () => {
             </div>
             <div className="formInput">
               <label htmlFor="file">
-                File <span className="wajib">*</span>
+                File (PDF) <span className="wajib">*</span>
               </label>
               <input type="file" id="file" onChange={(e) => setFile(e.target.files[0])} />
             </div>

@@ -91,7 +91,7 @@ const EditNews = () => {
             </div>
             <div className="formInput">
               <label htmlFor="foto">
-                Foto <span className="wajib">*</span>
+                Foto (PNG, JPG) <span className="wajib">*</span>
               </label>
               <input type="file" id="foto" onChange={(e) => setFile(e.target.files[0])} />
             </div>
