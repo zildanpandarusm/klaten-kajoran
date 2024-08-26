@@ -55,7 +55,8 @@ const EditOrganization = () => {
     } catch (error) {
       // setMsg(error.response.data.msg);
     } finally {
-      setIsLoading(false); 
+      setIsLoading(false);
+    }
   };
 
   useEffect(() => {
