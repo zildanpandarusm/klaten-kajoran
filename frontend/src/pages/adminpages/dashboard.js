@@ -12,10 +12,14 @@ const Dashboard = () => {
 
   useEffect(() => {
     dispatch(UserMe());
-    if (isError) {
+  }, [dispatch]);
+
+  useEffect(() => {
+    if (!user || isError) {
       navigate('/admin/login');
     }
-  }, [dispatch, isError, navigate]);
+  }, [user, isError, navigate]);
+
   return (
     <Layout>
       <HalamanUtama />
