@@ -2048,6 +2048,11 @@ body {
     width: 100%;
   }
 
+  .maps .box .batas table th,
+  .maps .box .batas table td {
+    font-size: 1.2rem;
+  }
+
   .visimisi {
     padding: 0;
     flex-direction: column-reverse;
