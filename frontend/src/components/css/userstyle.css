@@ -1949,7 +1949,7 @@ body {
 
   .home .news .box .card.double .write h1 {
     font-size: 0.8rem;
-    color: #474747;
+    color: var(--dark-biru);
   }
 
   .home .news .box .card.double .write p {
