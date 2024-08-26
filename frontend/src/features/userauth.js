@@ -17,7 +17,7 @@ export const LoginUser = createAsyncThunk('user/LoginUser', async (user, thunkAP
       password: user.password,
     });
 
-    const token = response.data.token;
+    const token = response.data.result.token;
     sessionStorage.setItem('token', token);
     return response.data;
   } catch (error) {
@@ -39,7 +39,7 @@ export const UserMe = createAsyncThunk('user/Me', async (_, thunkAPI) => {
       withCredentials: true,
     });
 
-    return response.data;
+    return response.data.data;
   } catch (error) {
     if (error.response) {
       const message = error.response.data.msg;
