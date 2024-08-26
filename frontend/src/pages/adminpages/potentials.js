@@ -12,13 +12,10 @@ const Potensi = () => {
 
   useEffect(() => {
     dispatch(UserMe());
-  }, [dispatch]);
-
-  useEffect(() => {
-    if (!user || isError) {
+    if (isError) {
       navigate('/admin/login');
     }
-  }, [user, isError, navigate]);
+  }, [dispatch, isError, navigate]);
 
   return (
     <Layout>
