@@ -2141,8 +2141,6 @@ body {
 
   .berita .box .first .card img {
     width: 100%;
-    height: auto;
-    object-fit: contain;
   }
 
   .berita .box .first .card .write {
@@ -2187,6 +2185,12 @@ body {
 
   .detailberita .box .first {
     width: 100%;
+  }
+
+  .detailberita .box .first img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
   }
 
   .detailberita .box .second {
