@@ -11,12 +11,13 @@ const EditOrganisasi = () => {
   const navigate = useNavigate();
   const { user, isError } = useSelector((state) => state.userAuth);
 
-  useEffect(() => {
-    dispatch(UserMe());
-    if (isError) {
-      navigate('/admin/login');
-    }
-  }, [dispatch, isError, navigate]);
+ useEffect(() => {
+   const token = sessionStorage.getItem('token');
+   if (!token) {
+     navigate('/admin/login');
+   }
+ }, [dispatch, isError, navigate]);
+
 
   return (
     <Layout>

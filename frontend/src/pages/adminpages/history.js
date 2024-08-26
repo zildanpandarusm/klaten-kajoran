@@ -12,8 +12,8 @@ const Sejarah = () => {
   const { user, isError } = useSelector((state) => state.userAuth);
 
   useEffect(() => {
-    dispatch(UserMe());
-    if (isError) {
+    const token = sessionStorage.getItem('token');
+    if (!token) {
       navigate('/admin/login');
     }
   }, [dispatch, isError, navigate]);
